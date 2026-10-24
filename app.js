@@ -85,3 +85,26 @@ urgentBtn.addEventListener("click",()=>{
 
 
 // Part 3: Delete, using event delegation (20 marks)
+//Attach exactly one click listener to #task-list. Not one per button.
+// Inside it, use event.target to find out what was actually clicked.
+// Check whether event.target has the class delete-btn using classList.contains.
+// If it does, use .closest("li") to get the whole task element, not just the button, and
+// remove it with .remove().
+// Call updateStats() and showStatus("Item removed successfully!") afterwards.
+
+list.addEventListener("click",(event)=>{
+  if(event.target.classList.contains("delete-btn"))
+     event.target.closest("li").remove()
+   if( event.target.classList.contains("done-btn"))
+   {let li = event.target.closest("li")
+  li.classList.toggle("completed")
+  
+  if(li.classList.contains("completed")){
+    event.target.textContent="undo"
+  }
+  else{
+    event.target.textContent="Done"
+  }
+}})
+
+
