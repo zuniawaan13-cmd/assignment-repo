@@ -18,11 +18,14 @@ heading.textContent="My Task List"
 
 // Use innerHTML on #stats to set its starting content to the text Tasks: 0 wrapped in a <strong> tag.
 let stats=document.getElementById("stats")
-stats.innerHTML= <p id="stats"> <strong>Tasks: 0</strong>
-</p>
-
+stats.innerHTML= " <strong>Tasks: 0</strong>"
 
 
 // Use .style to give #stats a backgroundColor of light yellow and some padding,
 // directly from JavaScript. This is the one place in this assignment where inline .style is the
 // right tool, because it is a small one off change.
+
+stats.style.backgroundColor="lightyellow"
+stats.style.padding="20px"
+
+
