@@ -1,25 +1,15 @@
 //Part 1: Selecting and wiring up (15 marks)
-//At the top of app.js, select the elements you need and store them in const variables.
-
-// Use getElementById to select #task-input, #add-task-btn and #task-list.
 
 const taskInput = document.getElementById("task-input");
 const btn = document.getElementById("add-task-btn");
 const list = document.getElementById("task-list");
-
-// Use querySelector to select #main-heading, then change its text to "My Task List" using textContent.
-
 const heading = document.querySelector("#main-heading");
 heading.textContent = "My Task List";
-
-// Use innerHTML on #stats to set its starting content to the text Tasks: 0 wrapped in a <strong> tag.
 
 let stats = document.getElementById("stats");
 stats.innerHTML = " <strong>Tasks: 0</strong>";
 
-// Use .style to give #stats a backgroundColor of light yellow and some padding,
-// directly from JavaScript. This is the one place in this assignment where inline .style is the
-// right tool, because it is a small one off change.
+// Use .style to give #stats a backgroundColor of light yellow and some padding
 
 stats.style.backgroundColor = "lightyellow";
 stats.style.padding = "20px";
@@ -30,27 +20,8 @@ btn.addEventListener("click", addTask);
 
 // Part 2: Add a task, using create then configure then append (20 marks)
 //Write a function addTask(). Do not put this logic inline inside the listener. The function is called from the listener, keeping the pattern from the Day 2 class.
-// When it runs:
-
-// Read taskInput.value.
-// If the input is empty, stop there and add nothing. Use an if check, do not add blank tasks.
-// Otherwise build a new <li> with createElement and configure it:
-// set its textContent to the text the user typed
-// give it the class task using classList.add
-// give it a data-id attribute using setAttribute, using a counter that goes up by one for each task added
-
-// Create two buttons with createElement and put them inside the <li>:
-// a Done button with the class done-btn and the text Done
-// a Delete button with the class delete-btn and the text X
-// Append the <li> to #task-list using appendChild.
-// Clear the input with taskInput.value = "" so it is ready for the next task.
-// Call updateStats() and showStatus("Item added successfully!"), both written further down.
-// One more thing: add a second button somewhere in your #input-area labelled Add Urgent Task.
-// It does the same as addTask() except it uses prepend instead of appendChild, so an urgent
-// task goes to the top of the list.
 
 let counter = 0;
-
 function addTask(isUrgent) {
   if (taskInput.value === "") {
     return;
@@ -68,97 +39,96 @@ function addTask(isUrgent) {
   deleteBtn.classList.add("delete-btn");
   deleteBtn.textContent = "X";
   listItem.appendChild(deleteBtn);
-  taskInput.value=""
-  list.appendChild(listItem)
-updateStats();
+  taskInput.value = "";
+  list.appendChild(listItem);
+  updateStats();
   showStatus("Item added successfully!");
 
- if(isUrgent===true)
-  return list.prepend(listItem)
-else
-  return list.appendChild(listItem)
+  if (isUrgent === true) return list.prepend(listItem);
+  else return list.appendChild(listItem);
 }
 
-
-let urgentBtn=document.getElementById("urgent-btn")
-urgentBtn.addEventListener("click",()=>{
-  addTask(true)
-})
-
+let urgentBtn = document.getElementById("urgent-btn");
+urgentBtn.addEventListener("click", () => {
+  addTask(true);
+});
 
 // Part 3: Delete, using event delegation (20 marks)
 //Attach exactly one click listener to #task-list. Not one per button.
-// Inside it, use event.target to find out what was actually clicked.
-// Check whether event.target has the class delete-btn using classList.contains.
-// If it does, use .closest("li") to get the whole task element, not just the button, and
-// remove it with .remove().
-// Call updateStats() and showStatus("Item removed successfully!") afterwards.
-
-list.addEventListener("click",(event)=>{
-  if(event.target.classList.contains("delete-btn"))
-     event.target.closest("li").remove()
-     showStatus("Item removed successfully!")
-     updateStats()
-   if( event.target.classList.contains("done-btn"))
-   {let li = event.target.closest("li")
-  li.classList.toggle("completed")
-  showStatus("class added successfully!")
-     updateStats()
-  if(li.classList.contains("completed")){
-    event.target.textContent="undo"
-  }
-  else{
-    event.target.textContent="Done"
-  }
-  showStatus("class done successfully!")
-     updateStats()
-}})
-
 //Part 4: Done and Undo toggle (15 marks)
+//Handle this in the same single listener from Part 3. Do not add a second listener.
+
+list.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-btn"))
+    event.target.closest("li").remove();
+  showStatus("Item removed successfully!");
+  updateStats();
+  if (event.target.classList.contains("done-btn")) {
+    let li = event.target.closest("li");
+    li.classList.toggle("completed");
+    showStatus("class added successfully!");
+    updateStats();
+    if (li.classList.contains("completed")) {
+      event.target.textContent = "undo";
+    } else {
+      event.target.textContent = "Done";
+    }
+    showStatus("class done successfully!");
+    updateStats();
+  }
+});
 
 // Part 5: Status message, built with createElement (10 marks)
-let previousDiv=document.getElementById("todo-app")
-let newDiv=document.createElement("div")
-newDiv.id="status-msg"
-previousDiv.prepend(newDiv)
+
+let previousDiv = document.getElementById("todo-app");
+let newDiv = document.createElement("div");
+newDiv.id = "status-msg";
+previousDiv.insertBefore(newDiv,stats);
 
 // Write a function showStatus(message) that puts the message into that div using textContent.
-//Call it with "Item added successfully!" when a task is added, and "Item removed successfully!" when one is deleted.
 
-
-function showStatus(message){
-  newDiv.textContent=message
-  setTimeout(()=>{
-    newDiv.textContent=""
-  },2000)
+function showStatus(message) {
+  newDiv.textContent = message;
+  setTimeout(() => {
+    newDiv.textContent = "";
+  }, 2000);
 }
-
 
 // Part 6: Live stats, using traversing (15 marks)
 //Write a function updateStats() and call it at the end of every add, delete, done and undo action.
 
-function updateStats(){
-  let total= list.children.length
-   let done=list.querySelectorAll(".completed").length
-   let remaining=total-done
-   stats.textContent=`Tasks: ${total} | Done:${done} | Remaining:${remaining}`
+function updateStats() {
+  let total = list.children.length;
+  let done = list.querySelectorAll(".completed").length;
+  let remaining = total - done;
+  stats.textContent = `Tasks: ${total} | Done:${done} | Remaining:${remaining}`;
 }
 
+//Also use these at least once each, logging the result to the console:
+// .parentElement, to go from the task list up to #todo-app
+// .firstElementChild and .lastElementChild, to log the first and last task
+// .nextElementSibling, to log the task sitting directly after the first one
 
-console.log(list.parentElement)
-console.log(list.firstElementChild)
-console.log(list.lastElementChild)
-console.log(list.previousElementSibling)
-console.log(list.nextElementSibling)
+console.log(list.parentElement);
+console.log(list.firstElementChild);
+console.log(list.lastElementChild);
+console.log(list.previousElementSibling);
+console.log(list.nextElementSibling);
+
+//Part 7: Hover highlight (5 marks)
+
+list.addEventListener("mouseover", (event) => {
+  let task=event.target.closest("li").classList.add("highlight");
+  task.classList.add("highlight")
+});
+
+list.addEventListener("mouseout", (event) => {
+  let task=event.target.closest("li")
+  task.classList.remove("highlight");
+});
 
 
-list.addEventListener("mouseover",(event)=>{
-   event.target.closest("li").classList.add("highlight")
 
-})
 
-list.addEventListener("mouseout",(event)=>{
-   event.target.closest("li").classList.remove("highlight")
-})
 
 
