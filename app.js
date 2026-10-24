@@ -1,3 +1,6 @@
+// Comment:One delegated listener is better than applying listener on each button because it reduces repetition and easy to maintain the code if we apply listener on each button the code will become too large.
+// event.target is the  element that was clicked event.currentTarget is the element on which listener applies.
+
 //Part 1: Selecting and wiring up (15 marks)
 
 const taskInput = document.getElementById("task-input");
