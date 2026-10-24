@@ -69,7 +69,7 @@ function addTask(isUrgent) {
   deleteBtn.textContent = "X";
   listItem.appendChild(deleteBtn);
   taskInput.value=""
-  // updateStats();
+  updateStats();
   showStatus("Item added successfully!");
 
  if(isUrgent===true)
@@ -96,22 +96,26 @@ list.addEventListener("click",(event)=>{
   if(event.target.classList.contains("delete-btn"))
      event.target.closest("li").remove()
      showStatus("Item removed successfully!")
+     updateStats()
    if( event.target.classList.contains("done-btn"))
    {let li = event.target.closest("li")
   li.classList.toggle("completed")
-  
+  showStatus("class added successfully!")
+     updateStats()
   if(li.classList.contains("completed")){
     event.target.textContent="undo"
   }
   else{
     event.target.textContent="Done"
   }
+  showStatus("class done successfully!")
+     updateStats()
 }})
 
 //Part 4: Done and Undo toggle (15 marks)
 
 // Part 5: Status message, built with createElement (10 marks)
-let previousDiv=document.getElementById("todo-app")
+let previousDiv=document.getElementById("status")
 let newDiv=document.createElement("div")
 newDiv.id="status-msg"
 previousDiv.prepend(newDiv)
@@ -126,5 +130,23 @@ function showStatus(message){
     newDiv.textContent=""
   },2000)
 }
+
+
+// Part 6: Live stats, using traversing (15 marks)
+//Write a function updateStats() and call it at the end of every add, delete, done and undo action.
+
+function updateStats(){
+  let total= list.children.length
+   let done=list.querySelectorAll(".completed").length
+   let remaining=total-done
+   stats.textContent=`Tasks: ${total} | Done:${done} | Remaining:${remaining}`
+}
+
+
+console.log(list.parentElement)
+console.log(list.firstElementChild)
+console.log(list.lastElementChild)
+console.log(list.previousElementSibling)
+console.log(list.nextElementSibling)
 
 
