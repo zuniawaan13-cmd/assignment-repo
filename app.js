@@ -69,7 +69,8 @@ function addTask(isUrgent) {
   deleteBtn.textContent = "X";
   listItem.appendChild(deleteBtn);
   taskInput.value=""
-  updateStats();
+  list.appendChild(listItem)
+updateStats();
   showStatus("Item added successfully!");
 
  if(isUrgent===true)
@@ -77,6 +78,7 @@ function addTask(isUrgent) {
 else
   return list.appendChild(listItem)
 }
+
 
 let urgentBtn=document.getElementById("urgent-btn")
 urgentBtn.addEventListener("click",()=>{
@@ -115,7 +117,7 @@ list.addEventListener("click",(event)=>{
 //Part 4: Done and Undo toggle (15 marks)
 
 // Part 5: Status message, built with createElement (10 marks)
-let previousDiv=document.getElementById("status")
+let previousDiv=document.getElementById("todo-app")
 let newDiv=document.createElement("div")
 newDiv.id="status-msg"
 previousDiv.prepend(newDiv)
@@ -148,5 +150,15 @@ console.log(list.firstElementChild)
 console.log(list.lastElementChild)
 console.log(list.previousElementSibling)
 console.log(list.nextElementSibling)
+
+
+list.addEventListener("mouseover",(event)=>{
+   event.target.closest("li").classList.add("highlight")
+
+})
+
+list.addEventListener("mouseout",(event)=>{
+   event.target.closest("li").classList.remove("highlight")
+})
 
 
