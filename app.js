@@ -70,7 +70,7 @@ function addTask(isUrgent) {
   listItem.appendChild(deleteBtn);
   taskInput.value=""
   // updateStats();
-  // showStatus("Item added successfully!");
+  showStatus("Item added successfully!");
 
  if(isUrgent===true)
   return list.prepend(listItem)
@@ -95,6 +95,7 @@ urgentBtn.addEventListener("click",()=>{
 list.addEventListener("click",(event)=>{
   if(event.target.classList.contains("delete-btn"))
      event.target.closest("li").remove()
+     showStatus("Item removed successfully!")
    if( event.target.classList.contains("done-btn"))
    {let li = event.target.closest("li")
   li.classList.toggle("completed")
@@ -106,5 +107,24 @@ list.addEventListener("click",(event)=>{
     event.target.textContent="Done"
   }
 }})
+
+//Part 4: Done and Undo toggle (15 marks)
+
+// Part 5: Status message, built with createElement (10 marks)
+let previousDiv=document.getElementById("todo-app")
+let newDiv=document.createElement("div")
+newDiv.id="status-msg"
+previousDiv.prepend(newDiv)
+
+// Write a function showStatus(message) that puts the message into that div using textContent.
+//Call it with "Item added successfully!" when a task is added, and "Item removed successfully!" when one is deleted.
+
+
+function showStatus(message){
+  newDiv.textContent=message
+  setTimeout(()=>{
+    newDiv.textContent=""
+  },2000)
+}
 
 
