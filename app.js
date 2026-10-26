@@ -69,14 +69,17 @@ list.addEventListener("click", (event) => {
   if (event.target.classList.contains("done-btn")) {
     let li = event.target.closest("li");
     li.classList.toggle("completed");
-    showStatus("class added successfully!");
+    showStatus("Task completed successfully!");
     updateStats();
     if (li.classList.contains("completed")) {
       event.target.textContent = "undo";
-    } else {
-      event.target.textContent = "Done";
+       showStatus("Task completed successfully!");
+     
     }
-    showStatus("class done successfully!");
+     else {
+      event.target.textContent = "Done";
+       showStatus("Task marked as incomplete!");
+    }
     updateStats();
   }
 });
@@ -86,7 +89,7 @@ list.addEventListener("click", (event) => {
 let previousDiv = document.getElementById("todo-app");
 let newDiv = document.createElement("div");
 newDiv.id = "status-msg";
-previousDiv.insertBefore(newDiv,stats);
+previousDiv.insertBefore(newDiv, stats);
 
 // Write a function showStatus(message) that puts the message into that div using textContent.
 
@@ -121,17 +124,15 @@ console.log(list.nextElementSibling);
 //Part 7: Hover highlight (5 marks)
 
 list.addEventListener("mouseover", (event) => {
-  let task=event.target.closest("li").classList.add("highlight");
-  task.classList.add("highlight")
+  let task = event.target.closest("li");
+  if (task) {
+    task.classList.add("highlight");
+  }
 });
 
 list.addEventListener("mouseout", (event) => {
-  let task=event.target.closest("li")
-  task.classList.remove("highlight");
+  let task = event.target.closest("li");
+  if (task) {
+    task.classList.remove("highlight");
+  }
 });
-
-
-
-
-
-

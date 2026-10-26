@@ -15,8 +15,327 @@
 } 
 
 
-/* body{
-  background-color: rgb(180, 173, 173);
-} */
+/* Extra css applying for better ui */
+
+body {
+  background-color: #fff8f8;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+#todo-app {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: rgb(250, 246, 246);
+  padding: 30px;
+  border-radius: 16px ;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid black;
+}
+
+#task-input {
+  padding: 12px;
+  width: 60%;
+  border: 2px solid gray;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
 
 
+
+#add-task-btn,
+#urgent-btn {
+  padding: 12px 18px;
+  border: 2px solid gray;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#add-task-btn:active,
+#urgent-btn:active {
+  transform: scale(0.96);
+}
+
+
+#status-msg {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+
+.task button {
+  padding: 6px 12px;
+  margin-left: 10px;
+  border:2px solid gray;
+  border-radius: 6px;
+}
+
+.done-btn {
+  background-color: rgb(221, 219, 219);
+  color: rgb(2, 2, 2);
+   margin-left: 10px;
+  
+}
+
+.delete-btn {
+  background-color: rgb(221, 219, 219);
+  color: rgb(3, 3, 3);
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Task list spacing */
+#task-list {
+  padding-left: 25px;
+  margin-top: 24px;
+}
+
+#task-list li {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Input focus effect */
+#task-input {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#task-input:focus {
+  outline: none;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.18);
+}
+
+/* Buttons */
+#add-task-btn,
+#urgent-btn,
+.task button {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#add-task-btn:hover,
+#urgent-btn:hover,
+.task button:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+#add-task-btn:active,
+#urgent-btn:active,
+.task button:active {
+  transform: scale(0.96);
+}
+
+/* Stats bar */
+#stats {
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+/* Completed task */
+.completed {
+  opacity: 0.55;
+}
+
+/* Hover highlight */
+.highlight {
+  background-color: #e0f2fe;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== General Page ===== */
+body {
+  background: linear-gradient(135deg, #f4eaff, #fff5f7, #edf4ff);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  color: #30345f;
+}
+
+/* ===== Main Card ===== */
+#todo-app {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 30px;
+  border-radius: 20px;
+  border: 2px solid #a99aff;
+  box-shadow: 0 12px 30px rgba(117, 91, 190, 0.14);
+}
+
+/* ===== Heading ===== */
+#main-heading {
+  color: #393477;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: 24px;
+}
+
+/* ===== Input ===== */
+#input-area {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#task-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 13px;
+  border: 2px solid #c5b8ff;
+  border-radius: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#task-input:focus {
+  border-color: #8b75f5;
+  box-shadow: 0 0 0 4px rgba(139, 117, 245, 0.13);
+}
+
+/* ===== Main Buttons ===== */
+#add-task-btn,
+#urgent-btn {
+  padding: 13px 17px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+#add-task-btn {
+  background: linear-gradient(135deg, #26c6a0, #119d85);
+  color: white;
+  box-shadow: 0 4px 8px rgba(17, 157, 133, 0.18);
+}
+
+#urgent-btn {
+  background: linear-gradient(135deg, #ff829b, #f0527b);
+  color: white;
+  box-shadow: 0 4px 8px rgba(240, 82, 123, 0.18);
+}
+
+#add-task-btn:hover,
+#urgent-btn:hover {
+  box-shadow: 0 6px 12px rgba(80, 70, 130, 0.18);
+}
+
+#add-task-btn:active,
+#urgent-btn:active,
+.task button:active {
+  transform: scale(0.96);
+}
+
+/* ===== Status Message ===== */
+#status-msg {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #5b4bb7;
+}
+
+/* ===== Task Statistics ===== */
+#stats {
+  background: linear-gradient(135deg, #fff8dc, #fff3c4);
+  border: 1px solid #ffe29a;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 16px;
+  margin-bottom: 22px;
+  line-height: 1.6;
+  color: #41415e;
+}
+
+/* ===== Task List ===== */
+#task-list {
+  padding-left: 25px;
+  margin-top: 22px;
+}
+
+
+/* ===== Button Hover ===== */
+.task button:hover {
+  filter: brightness(0.97);
+}
+
+/* ===== Completed Task ===== */
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ===== Hover Highlight ===== */
+.highlight {
+  background-color: #e7f3ff;
+}
+
+/* ===== Small Screen Support ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  #todo-app {
+    padding: 20px 15px;
+  }
+
+  #main-heading {
+    font-size: 25px;
+  }
+
+  #input-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #task-input {
+    width: 100%;
+  }
+
+  #add-task-btn,
+  #urgent-btn {
+    width: 100%;
+  }
+
+  #task-list li {
+    gap: 7px;
+    padding: 8px 5px;
+  }
+}
