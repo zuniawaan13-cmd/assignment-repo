@@ -1,19 +1,12 @@
 .completed {
-
   text-decoration: line-through;
 
   opacity: 0.5;
-
 }
 
-
-
 .highlight {
-
   background-color: lightblue;
-    
-} 
-
+}
 
 /* Extra css applying for better ui */
 
@@ -28,7 +21,7 @@ body {
   margin: 0 auto;
   background-color: rgb(250, 246, 246);
   padding: 30px;
-  border-radius: 16px ;
+  border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 2px solid black;
 }
@@ -41,8 +34,6 @@ body {
   font-size: 15px;
   box-sizing: border-box;
 }
-
-
 
 #add-task-btn,
 #urgent-btn {
@@ -57,46 +48,30 @@ body {
   transform: scale(0.96);
 }
 
-
 #status-msg {
   margin-top: 12px;
   margin-bottom: 12px;
   font-size: 14px;
 }
 
-
 .task button {
   padding: 6px 12px;
   margin-left: 10px;
-  border:2px solid gray;
+  border: 2px solid gray;
   border-radius: 6px;
 }
 
 .done-btn {
   background-color: rgb(221, 219, 219);
   color: rgb(2, 2, 2);
-   margin-left: 10px;
-  
+  margin-left: 10px;
 }
 
 .delete-btn {
   background-color: rgb(221, 219, 219);
   color: rgb(3, 3, 3);
-    margin-left: 5px;
+  margin-left: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Task list spacing */
 #task-list {
@@ -113,7 +88,9 @@ body {
 
 /* Input focus effect */
 #task-input {
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 #task-input:focus {
@@ -126,7 +103,9 @@ body {
 #add-task-btn,
 #urgent-btn,
 .task button {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 #add-task-btn:hover,
@@ -156,24 +135,6 @@ body {
 .highlight {
   background-color: #e0f2fe;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ===== General Page ===== */
 body {
@@ -220,7 +181,9 @@ body {
   font-size: 15px;
   box-sizing: border-box;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 #task-input:focus {
@@ -237,7 +200,9 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
 #add-task-btn {
@@ -289,7 +254,6 @@ body {
   margin-top: 22px;
 }
 
-
 /* ===== Button Hover ===== */
 .task button:hover {
   filter: brightness(0.97);
@@ -338,4 +302,34 @@ body {
     gap: 7px;
     padding: 8px 5px;
   }
+}
+
+.task {
+  display: flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid lightblue;
+}
+
+.task .done-btn {
+  margin-left:auto;
+  background-color: #6eb992;
+  color: white;
+}
+
+.task .delete-btn {
+  background-color: #f0527b;
+  color: white;
+}
+
+.task::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid #a99aff;
+  border-radius: 50%;
+  flex-shrink: 0;
 }

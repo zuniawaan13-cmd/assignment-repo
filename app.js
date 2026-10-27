@@ -152,6 +152,7 @@ let savedTasks = JSON.parse(localStorage.getItem("tasks"))||[];
 savedTasks.forEach((task) => {
   let li = document.createElement("li");
   li.textContent = task;
+  li.classList.add("task");
   list.appendChild(li);
 
    let doneBtn = document.createElement("button");
