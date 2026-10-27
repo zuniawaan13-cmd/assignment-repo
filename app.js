@@ -108,8 +108,7 @@ function updateStats() {
   let done = list.querySelectorAll(".completed").length;
   let remaining = total - done;
   stats.textContent = `Tasks: ${total} | Done:${done} | Remaining:${remaining}`;
-  localStorage.setItem("totalTasks",list.children.length)
-
+  localStorage.setItem("totalTasks", list.children.length);
 }
 
 //Also use these at least once each, logging the result to the console:
@@ -139,23 +138,20 @@ list.addEventListener("mouseout", (event) => {
   }
 });
 
-
-
 //local storage
 
 // localStorage.setItem("totalTasks",list.children.length)
-let total=Number(localStorage.getItem("totalTasks")||0)
-console.log(total)
+let total = Number(localStorage.getItem("totalTasks") || 0);
+console.log(total);
 
-
-let savedTasks = JSON.parse(localStorage.getItem("tasks"))||[];
+let savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 savedTasks.forEach((task) => {
   let li = document.createElement("li");
   li.textContent = task;
   li.classList.add("task");
   list.appendChild(li);
 
-   let doneBtn = document.createElement("button");
+  let doneBtn = document.createElement("button");
   doneBtn.classList.add("done-btn");
   doneBtn.textContent = "Done";
   li.appendChild(doneBtn);

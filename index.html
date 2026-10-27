@@ -1,34 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="todo-app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="todo-app">
+      <h1 id="main-heading">My Task List</h1>
 
-  <h1 id="main-heading">My Task List</h1>
+      <div id="input-area">
+        <input type="text" id="task-input" placeholder="Enter a new task..." />
 
+        <button id="add-task-btn">Add Task</button>
+        <button id="urgent-btn">Add Urgent Task</button>
+      </div>
 
+      <p id="stats"></p>
 
-  <div id="input-area">
+      <ul id="task-list"></ul>
+    </div>
 
-    <input type="text" id="task-input" placeholder="Enter a new task..." />
-
-    <button id="add-task-btn">Add Task</button>
-    <button id="urgent-btn">Add Urgent Task</button>
-
-  </div>
-
-   <p id="stats"></p>
-
-  <ul id="task-list"></ul>
-</div>
-  
-
-
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
