@@ -23,7 +23,7 @@ btn.addEventListener("click", addTask);
 
 // Part 2: Add a task, using create then configure then append (20 marks)
 //Write a function addTask(). Do not put this logic inline inside the listener. The function is called from the listener, keeping the pattern from the Day 2 class.
-
+let tasks = [];
 let counter = 0;
 function addTask(isUrgent) {
   if (taskInput.value === "") {
@@ -42,6 +42,8 @@ function addTask(isUrgent) {
   deleteBtn.classList.add("delete-btn");
   deleteBtn.textContent = "X";
   listItem.appendChild(deleteBtn);
+  tasks.push(taskInput.value);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
   taskInput.value = "";
   list.appendChild(listItem);
   updateStats();
@@ -73,12 +75,10 @@ list.addEventListener("click", (event) => {
     updateStats();
     if (li.classList.contains("completed")) {
       event.target.textContent = "undo";
-       showStatus("Task completed successfully!");
-     
-    }
-     else {
+      showStatus("Task completed successfully!");
+    } else {
       event.target.textContent = "Done";
-       showStatus("Task marked as incomplete!");
+      showStatus("Task marked as incomplete!");
     }
     updateStats();
   }
@@ -108,6 +108,8 @@ function updateStats() {
   let done = list.querySelectorAll(".completed").length;
   let remaining = total - done;
   stats.textContent = `Tasks: ${total} | Done:${done} | Remaining:${remaining}`;
+  localStorage.setItem("totalTasks",list.children.length)
+
 }
 
 //Also use these at least once each, logging the result to the console:
@@ -136,3 +138,31 @@ list.addEventListener("mouseout", (event) => {
     task.classList.remove("highlight");
   }
 });
+
+
+
+//local storage
+
+// localStorage.setItem("totalTasks",list.children.length)
+let total=Number(localStorage.getItem("totalTasks")||0)
+console.log(total)
+
+
+let savedTasks = JSON.parse(localStorage.getItem("tasks"))||[];
+savedTasks.forEach((task) => {
+  let li = document.createElement("li");
+  li.textContent = task;
+  list.appendChild(li);
+
+   let doneBtn = document.createElement("button");
+  doneBtn.classList.add("done-btn");
+  doneBtn.textContent = "Done";
+  li.appendChild(doneBtn);
+
+  let deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete-btn");
+  deleteBtn.textContent = "X";
+  li.appendChild(deleteBtn);
+});
+
+updateStats();
